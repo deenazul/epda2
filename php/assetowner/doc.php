@@ -1,6 +1,3 @@
-<?php
-echo "this is doc.php";
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -18,12 +15,18 @@ echo "this is doc.php";
 		  		<a href="#" class="img logo rounded-circle mb-5" style="background-image: url(http://irdina.projectmuu.com/epda2/php/sidebar/images/logo.jpg);"></a>
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
-
-	          <li>
-	              <a href="#">Profile</a>
+             
+              <li>
+	              <a href="homeowner.php">Manage Credentials</a>
 	          </li>
               <li>
-	              <a href="#">Manage Credentials</a>
+	              <a href="doc.php">Manage Estate Administration</a>
+	          </li>
+              <li>
+	              <a href="viewver.php">View Verified Document</a>
+	          </li>
+              <li>
+	              <a href="logout.php">Log Out</a>
 	          </li>
 	        </ul>
 	        <div class="footer">
@@ -155,9 +158,9 @@ table.table td .add {
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2>List of Credentials </h2></div>
+                    <div class="col-sm-8"><h2>List of Documents </h2></div>
                     <div class="col-sm-4">
-                    <button type="button" onclick="window.location.href='addcredsform.php'">Add New Credentials</button>
+                    <button type="button" onclick="window.location.href='adddocform.php'">Upload File</button>
                     </div>
                 </div>
             </div>
@@ -166,7 +169,7 @@ table.table td .add {
                     <tr>
                     <th>ID</th>
                         <th>Title of Document</th>
-                        <th>Document</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -175,6 +178,7 @@ table.table td .add {
                 include_once('dbconnect.php');
              $id = $_GET['id'];
                 $title= $_GET['title'];
+                $status= $_GET['status'];
                 $doc=$_FILES['doc'];
                 $sql = "SELECT * FROM tbl_doc ";
                 $result = $conn-> query($sql);
@@ -186,9 +190,8 @@ while($row = $result-> fetch_assoc())
 <tr style="align-content:left">
 <td><?php echo $row["id"]; ?></td>
     <td><?php echo $row["title"]; ?></td>
-    <!-- <td> <embed type="application/pdf" src="../uploads/<?php echo $target_file ?>" width="300" height="300">  -->
-    <td><a href="../uploads/<?php echo $row["title"]?>" class="btn btn-danger">View</a> </td>
-
+    <td><a href="../uploads/<?php echo $row["title"]?>" class="btn btn-danger">View</a>
+    <a download="../uploads/<?php echo $row["title"]?>" href="../uploads/<?php echo $row["title"]?>" class="btn btn-danger"> Download</a> </td>
 </tr>
 <?php
 }

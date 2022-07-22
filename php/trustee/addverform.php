@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Add Document</title>
+<title>Add Verified Document</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
 <!-- Font Icon -->
@@ -73,8 +73,8 @@ h1{
 
 <!--THIS IS HTML SECTION-->
 <body>
-    <div class="adddocform">
-    <form name = "adddoc" action="adddocact.php" method="POST" enctype="multipart/form-data">
+    <div class="addverform">
+    <form name = "addver" action="addveract.php" method="POST" enctype="multipart/form-data">
     <div><h1>Please enter the following details</h1>
     <div class="row">
     <div class="column">
@@ -82,7 +82,7 @@ h1{
         <div class="form-group">
 <div class="col-md-12">
         <div class="form-group">
-           <p>Title of Document:</p>
+           <p>Title of Verified Document:</p>
             <input type="text" name="title" id="title" class="form-control">
         <p>Upload Document:</p> 
         <input type="file" name="doc" id="doc">

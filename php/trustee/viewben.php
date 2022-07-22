@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,13 +17,10 @@
 	        <ul class="list-unstyled components mb-5">
 	          <li class="active">
               <li>
-	              <a href="homeowner.php">Manage Credentials</a>
+	              <a href="trustee.php">Manage Estate Administration</a>
 	          </li>
               <li>
-	              <a href="doc.php">Manage Estate Administration</a>
-	          </li>
-              <li>
-	              <a href="viewver.php">View Verified Document</a>
+	              <a href="verify.php">Verify Document</a>
 	          </li>
               <li>
 	              <a href="logout.php">Log Out</a>
@@ -157,45 +155,51 @@ table.table td .add {
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
-                    <div class="col-sm-8"><h2>List of Credentials </h2></div>
+                    <div class="col-sm-8"><h2>List of Documents</h2></div>
                     <div class="col-sm-4">
-                    <button type="button" onclick="window.location.href='addcredsform.php'">Add New Credentials</button>
+                    <button type="button" onclick="window.location.href='addbenform.php'">Add New Beneficiary</button>
+                    <button type="button" onclick="window.location.href='viewben.php'">View List of Beneficiary</button>
                     </div>
                 </div>
-            </div> 
+            </div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                    <th>ID</th>
-                        <th>Category</th>
-                        <th>Name of Digital Assets</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        
+                    
+                        <th>Full Name</th>
+                        <th>IC</th>
+                        <th>Email</th>
+                        <th>Type of Credentials</th>
+                        <th>Credentials' Username</th>
+                        <th>Credentials' Password</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- display data in table -->
+
                 <?php  
                 include_once('dbconnect.php');
-                session_start();
-                $id_creds = $_GET['id_creds'];
-                $category = $_GET['category'];
-                $name = $_GET['name'];
-                $username = $_GET['username'];
-                $password = $_GET['password'];
-                $sql = "SELECT id_creds,category,name,username,password FROM tbl_creds1";
+             $id = $_GET['id'];
+                $name= $_GET['name'];
+                $ic= $_GET['ic'];
+                $emailBen= $_GET['emailBen'];
+                $nameCreds= $_GET['nameCreds'];
+                $username= $_GET['username'];
+                $password= $_GET['password'];
+                $sql = "SELECT * FROM tbl_ben1 ";
                 $result = $conn-> query($sql);
+
 ?> <?php
 while($row = $result-> fetch_assoc())
 { ?>
 <tr style="align-content:left">
-<td><?php echo $row["id_creds"]; ?></td>
-    <td><?php echo $row["category"]; ?></td>
-    <td><?php echo $row["name"]; ?></td>
-    <td><?php echo $row["username"]; ?></td>
-    <td><?php echo $row["password"]; ?></td>
 
+<td><?php echo $row["name"]; ?></td>
+<td><?php echo $row["ic"]; ?></td>
+<td><?php echo $row["emailBen"]; ?></td>
+<td><?php echo $row["nameCreds"]; ?></td>
+<td><?php echo $row["username"]; ?></td>
+<td><?php echo $row["password"]; ?></td>
+</td>
 </tr>
 <?php
 }
@@ -212,10 +216,6 @@ while($row = $result-> fetch_assoc())
 			</div>
 		</div>
 	</section>
-
-        <!-- <h2 class="mb-4">Sidebar #01</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
       </div>
 		</div>
 
@@ -225,4 +225,3 @@ while($row = $result-> fetch_assoc())
     <script src="http://irdina.projectmuu.com/epda2/php/sidebar/js/main.js"></script>
   </body>
 </html>
-
